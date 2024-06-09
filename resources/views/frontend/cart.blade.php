@@ -45,7 +45,7 @@
                         <button class="input-group-text changeQuantity increment-btn">+</button>
                     </div>
                     @php
-                    $total += $item->products->selling_price * $item->prod_qty;
+                    $total += (float) $item->products->selling_price * (float) $item->prod_qty;
                     @endphp
                     @else
                         <h5>Out of Stock</h5>
@@ -61,7 +61,7 @@
         </div>
         <div class="card-footer d-flex flex-column">
             <div class="d-flex align-items-center justify-content-end text-center">
-                <h6 class="float-end">Total Price : RS {{$total}}</h6>
+                <h6 class="float-end">Total Price :  {{$total}}</h6>
             </div>
             <hr>
             <div class="d-flex align-items-center justify-content-end">

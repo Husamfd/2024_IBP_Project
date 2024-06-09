@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class frontendController extends Controller
 {
@@ -12,3 +11,4 @@ class frontendController extends Controller
         return view('Admin.dashboard');
     }
 }
+

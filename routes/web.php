@@ -26,6 +26,7 @@ use App\Mail\WelcomeMail;
 |
 */
 
+
 Route::get('/', [FrontController::class ,  'mainpage']);
 Route::get('/category',[FrontController::class ,  'category']);
 Route::get('view-category/{slug}',[FrontController::class ,  'viewCategory']);
@@ -55,6 +56,7 @@ Route::get('contact',[contactComplains::class ,  'index']);
 Route::post('sendMessage',[contactComplains::class ,  'submitForm']);
 Route::view('about' , 'frontend.About');
 
+Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
 
 Route::middleware(['auth' ])->group(function () {
     Route::get('cart',[CartController::class , 'viewCart']);
@@ -75,40 +77,35 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
 
 
-Route::middleware(['auth','isAdmin'])->group(function () {
-    Route::get('/dashboard','App\Http\Controllers\Admin\frontendController@index');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/dashboard', [frontendController::class, 'index'])->name('admin.dashboard');
 
-    // Categories Routes
+    // توجيهات الفئات
+    Route::get('/categories', [CategoriesController::class, 'index']);
+    Route::get('/add-category', [CategoriesController::class, 'add']);
+    Route::post('insert-category', [CategoriesController::class, 'insert']);
+    Route::get('edit-category/{id}', [CategoriesController::class, 'edit']);
+    Route::put('update-category/{id}', [CategoriesController::class, 'update']);
+    Route::get('delete-category/{id}', [CategoriesController::class, 'delete']);
 
-    Route::get('/categories','App\Http\Controllers\Admin\CategoriesController@index');
-    Route::get('/add-category','App\Http\Controllers\Admin\CategoriesController@add');
-    Route::post('insert-category' , 'App\Http\Controllers\Admin\CategoriesController@insert');
-    Route::get('edit-category/{id}',[CategoriesController::class , 'edit']);
-    Route::put('update-category/{id}',[CategoriesController::class , 'update']);
-    Route::get('delete-category/{id}',[CategoriesController::class , 'delete']);
-    
-    
-    // Product Routes
-    Route::get('/products','App\Http\Controllers\Admin\ProductController@index');
-    Route::get('/add-product','App\Http\Controllers\Admin\ProductController@add');
-    Route::post('insert-product' , 'App\Http\Controllers\Admin\ProductController@insert');
-    Route::get('edit-product/{id}',[ProductController::class, 'edit']);
-    Route::put('update-product/{id}',[ProductController::class , 'update']);
-    Route::get('delete-product/{id}',[ProductController::class , 'delete']);
-    Route::put('update-order/{id}',[UserController::class , 'updateOrder']);
+    // توجيهات المنتجات
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/add-product', [ProductController::class, 'add']);
+    Route::post('insert-product', [ProductController::class, 'insert']);
+    Route::get('edit-product/{id}', [ProductController::class, 'edit']);
+    Route::put('update-product/{id}', [ProductController::class, 'update']);
+    Route::get('delete-product/{id}', [ProductController::class, 'delete']);
+    Route::put('update-order/{id}', [UserController::class, 'updateOrder']);
 
-    
-    Route::get('orders',[OrderController::class, 'index']);
-    Route::get('admin/view-order/{id}',[OrderController::class, 'view']);
-    Route::put('update-order/{id}',[OrderController::class , 'updateOrder']);
-    Route::get('order-history',[OrderController::class , 'orderHistory']);
-    
-    Route::get('users',[DashboardController::class, 'users']);
-    Route::get('view-user/{id}',[DashboardController::class, 'viewUser']);
-    
-    
-    Route::get('message',[contactComplains::class, 'viewcomplains']);
+    Route::get('orders', [OrderController::class, 'index']);
+    Route::get('admin/view-order/{id}', [OrderController::class, 'view']);
+    Route::put('update-order/{id}', [OrderController::class, 'updateOrder']);
+    Route::get('order-history', [OrderController::class, 'orderHistory']);
+
+    Route::get('users', [DashboardController::class, 'users']);
+    Route::get('view-user/{id}', [DashboardController::class, 'viewUser']);
+
+    Route::get('message', [contactComplains::class, 'viewcomplains']);
 });
-
 
 

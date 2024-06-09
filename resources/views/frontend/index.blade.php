@@ -47,31 +47,33 @@
         </div>
     </div>
     
-    <div class="container  d-flex align-items-center justify-content-around p-4">
+    <div class="container  d-flex align-items-center justify-content-around p-4" id="new-arrivals">
         <div class="border border-dark " style="width:20rem; background:black;"></div>
         <h3 style="font-size: ; font-weight:bolder; padding:5px;">NEW ARRIVALS</h3>
         <div class="border border-dark " style="width:20rem; background:black;"></div>
     </div>
     <div class="py-5" id="products">
         <div class="container">
-            <div class="row d-flex flex-wrap">
-                @foreach ($product as $item )
-                <div class="col-md-3 mt-2">
-                             <a  class="link-dark"  href="{{url(asset('view-product/'.$item->slug))}}">
-                            <div class="card hello-card" style="width: 18rem;">
-                                <img src="{{asset('upload/product/'.$item->image)}}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{$item->name}}</h6>
-                                        <span href="#" class=" pe-auto float-start">RS <s>{{$item->original_price}}</s></span>
-                                        <span href="#" class=" pe-auto float-end">RS {{$item->selling_price}}</span>
+            <div class="row">
+                <div class="row d-flex flex-wrap">
+                    @foreach ($product as $item )
+                    <div class="card col-md-4 " style="border:none;">
+                                <a  class="link-dark"  href="{{url(asset('view-product/'.$item->slug))}}">
+                                <div class="card hello-card" style="width: 18rem;">
+                                    <img src="{{asset('upload/product/'.$item->image)}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{$item->name}}</h6>
+                                            <span href="#" class=" pe-auto float-start">RS <s>{{$item->original_price}}</s></span>
+                                            <span href="#" class=" pe-auto float-end">RS {{$item->selling_price}}</span>
+                                    </div>
                                 </div>
+                            </a>
                             </div>
-                        </a>
-                        </div>
-                    @endforeach
+                        @endforeach
+                </div>
             </div>
-        </div>
-    </div>
+       </div>
+  </div>
 @endsection
 
 

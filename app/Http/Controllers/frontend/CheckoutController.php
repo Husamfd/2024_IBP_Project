@@ -51,7 +51,7 @@ class CheckoutController extends Controller
 
         $order->total_price= $total;
 
-        $order->tracking_no = 'AbdullahMoiz'.rand(1111,9999);
+        $order->tracking_no = 'HOSAM'.rand(1111,9999);
         $order->save();
 
         $order->id;

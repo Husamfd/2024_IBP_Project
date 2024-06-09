@@ -91,11 +91,11 @@
                 </li>
 
                 <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                    <p>5132742615</p>
+                    <p>51902846013</p>
                 </li>
 
                 <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                    <p>mahmoudsalem@gmail.com</p>
+                    <p>husamalfoudai@gmail.com</p>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class FailedJob extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'uuid',
+        'connection',
+        'queue',
+        'payload',
+        'exception',
+        'failed_at',
+    ];
+
+    public $timestamps = false; // تعطيل حقول updated_at و created_at
+}
